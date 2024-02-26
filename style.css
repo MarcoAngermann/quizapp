@@ -14,3 +14,38 @@ body {
 .app-logo {
     width: 56px;
 }
+
+.text-color {
+    color: #cbf66c
+}
+
+.quiz-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn-color {
+   background-color:#c0f064;
+}
+
+.btn-color:hover {
+    background-color:#7fc202;
+ }
+
+.card-footer {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row-reverse;
+    padding-top: 12px;
+}
+
+.quiz-answer-card {
+    background-color: #212529;
+}
+
+.quiz-answer-card:hover {
+    cursor: pointer;
+    background-color: #2b3035;
+}

@@ -11,46 +11,51 @@
     <script src="script.js"></script>
 </head>
 
-<body>
+<body onload="init()">
     <nav class="navbar navbar-dark bg-dark">
         <div class="container-fluid">
-            <span class="navbar-brand mb-0 h1 text-warning"><img class="app-logo" src="" alt="">QuizApp</span>
+            <span class="navbar-brand mb-0 h1 text-color"><img class="app-logo" src="">QuizApp</span>
         </div>
     </nav>
     <div class="center-container">
-        <div class="container">
-            <div class="row">
-                <div class="col-4">
+        <div class="container-xxl">
+            <div class="quiz-container">
+                <div class="col-10">
                     <div class="card bg-dark">
-                        <img src="./img/question.jpg" class="card-img-top" alt="...">
+                        <img src="./img/question-green.jpg" class="card-img-top">
                         <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text text-white">Some quick example text to build on the card title and make
+                            <h5 class="card-title text-white">Frage : </h5>
+                            <p class="card-text text-white" id="questiontext">Some quick example text to build on the card title and make
                                 up the bulk of the card's content.</p>
-                             <a href="#" class="btn btn-secondary">NÄCHSTE FRAGE</a>   
-                            <a href="#" class="btn btn-secondary">START QUIZ</a>
-                            <div class="text-white mt-2"><b>1</b> von <b>5</b> Fragen</div>
+                            <div class="card-footer">
+                            <div>
+                                <a href="#" class="btn btn-color text-dark mb-2">NÄCHSTE FRAGE</a> 
+                            </div>
+                            <span>
+                                <div class="text-white mt-2"><b>1</b> von <b id="all-questions"></b> Fragen</div>
+                            </span>  
+                        </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-8">
-                    <div class="card mb-2 bg-dark text-white">
-                        <div class="card-body">
+                <div class="col-10 mt-2">
+                    <div class="card mb-2 text-white quiz-answer-card" onclick="answer('answer_1')">
+                        <div class="card-body" id="answer_1">
                             ANTWORT 1
                         </div>
                     </div>
-                    <div class="card mb-2 bg-dark text-white">
-                        <div class="card-body">
+                    <div class="card mb-2 text-white quiz-answer-card" onclick="answer('answer_2')">
+                        <div class="card-body" id="answer_2">
                             ANTWORT 2
                         </div>
                     </div>
-                    <div class="card mb-2 bg-dark text-white">
-                        <div class="card-body">
+                    <div class="card mb-2 text-white quiz-answer-card" onclick="answer('answer_3')">
+                        <div class="card-body" id="answer_3">
                             ANTWORT 3
                         </div>
                     </div>
-                    <div class="card bg-dark text-white">
-                        <div class="card-body">
+                    <div class="card text-white quiz-answer-card" onclick="answer('answer_4')">
+                        <div class="card-body" id="answer_4">
                             ANTWORT 4
                         </div>
                     </div>
