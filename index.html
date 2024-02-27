@@ -18,8 +18,11 @@
         </div>
     </nav>
     <div class="center-container">
-        <div class="container-xxl">
-            <div class="quiz-container">
+        <div id="endScreen" style="display: none;">
+            <img src="./img/brain result.png">
+        </div>
+        <div class="container-xl">
+            <div class="quiz-container" id="questionBody" style="display: flex;">
                 <div class="col-10">
                     <div class="card bg-dark">
                         <img src="./img/question-green.jpg" class="card-img-top">
@@ -29,10 +32,10 @@
                                 up the bulk of the card's content.</p>
                             <div class="card-footer">
                             <div>
-                                <a href="#" class="btn btn-color text-dark mb-2">NÄCHSTE FRAGE</a> 
+                                <button onclick="nextQuestion()" class="btn btn-color text-dark mb-2" id="next-button" disabled>NÄCHSTE FRAGE</button> 
                             </div>
                             <span>
-                                <div class="text-white mt-2"><b>1</b> von <b id="all-questions"></b> Fragen</div>
+                                <div class="text-white mt-2"><b id="question-number">1</b> von <b id="all-questions"></b> Fragen</div>
                             </span>  
                         </div>
                         </div>
