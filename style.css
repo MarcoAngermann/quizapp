@@ -78,5 +78,10 @@ body {
     .container-fluid {
         padding-left: 0px;
         padding-right: 0px;
+        
+    }
+
+    .center-container {
+        
     }
 }

@@ -70,18 +70,28 @@ function init() {
 
 function showQuestion() {
 
-    if(currentQuestion >= questions.length) { // Wenn currentQuestion größer als questions.length ist für den Code aus.
-        document.getElementById('questionBody').style = 'display: none';
-        document.getElementById('cardImage').src = "./img/trophy1.png"
-        document.getElementById('cardTitle').innerHTML = 'Quiz beendet!'
-        document.getElementById('questiontext').innerHTML = `Du hast <b>${rightQuestions}</b> von <b>${currentQuestion}</b> Fragen richtig beantwortet!`
-        document.getElementById('next-button').style = 'display: none';
-        document.getElementById('restart-button').style = 'display: block';
+    if(gameIsOver()) { // Wenn currentQuestion größer als questions.length ist für den Code aus.
+        showEndscreen();
     } else { // Wenn currentQuestion kleiner ist als questions.length für diesen Code aus
-    let percent = (currentQuestion +1) / questions.length; // hier erhöhen wir die Progress bar
-    percent = Math.round(percent * 100); // Math.round ist um die Kommastellen zu runden , percent * 100 dient dazu Beispiel das dort nicht 0.14% steht!
-    document.getElementById('progress-bar').innerHTML = `${percent}%` // hier werden die Prozent Zahlen in der Anzeige erhöht
-    document.getElementById('progress-bar').style = ` width: ${percent}%` // Hier wird dafür gesorgt das die Progressbar auch Optisch größer wird.
+        updateProgressBar();
+        nextQuestionUpdate();
+    }
+}
+
+function showEndscreen() {
+    document.getElementById('questionBody').style = 'display: none';
+    document.getElementById('cardImage').src = "./img/trophy1.png"
+    document.getElementById('cardTitle').innerHTML = 'Quiz beendet!'
+    document.getElementById('questiontext').innerHTML = `Du hast <b>${rightQuestions}</b> von <b>${currentQuestion}</b> Fragen richtig beantwortet!`
+    document.getElementById('next-button').style = 'display: none';
+    document.getElementById('restart-button').style = 'display: block';
+}
+
+function gameIsOver() {
+    return currentQuestion >= questions.length;
+}
+
+function nextQuestionUpdate() {
     let question = questions[currentQuestion];
     document.getElementById('question-number').innerHTML = currentQuestion +1; // das erhöht die Anzeige der Fragen das +1 ist dafür damit es nicht bei 0 beginnt.
     document.getElementById('questiontext').innerHTML = question['question'];
@@ -89,14 +99,20 @@ function showQuestion() {
     document.getElementById('answer_2').innerHTML = question['answer_2'];
     document.getElementById('answer_3').innerHTML = question['answer_3'];
     document.getElementById('answer_4').innerHTML = question['answer_4'];
-    }
+}
+
+function updateProgressBar() {
+    let percent = (currentQuestion +1) / questions.length; // hier erhöhen wir die Progress bar
+    percent = Math.round(percent * 100); // Math.round ist um die Kommastellen zu runden , percent * 100 dient dazu Beispiel das dort nicht 0.14% steht!
+    document.getElementById('progress-bar').innerHTML = `${percent}%` // hier werden die Prozent Zahlen in der Anzeige erhöht
+    document.getElementById('progress-bar').style = ` width: ${percent}%` // Hier wird dafür gesorgt das die Progressbar auch Optisch größer wird.
 }
 
 function answer(selection) { // Hier übergeben wir an selection ( answer_1 bis answer_7)
     let question = questions[currentQuestion];
     let selectedQuestionNumber = selection.slice(-1); // mit dem Befehel slice -1 holen wir uns den letzten teil von hinten gezählt aus dem String
     let idOfRightAnswer = `answer_${question['right_answer']}`; // hiermit holen wir uns die richtige Antwort aus dem Array
-    if(selectedQuestionNumber == question['right_answer']) {
+    if(rightAnswerSelected(selectedQuestionNumber , question)) {
         document.getElementById(selection).parentNode.classList.add('bg-success'); // Wenn die richtige Antwort gewählt wurde füge die klasse bg-success hinzu (Grün färben).
         AUDIO_RIGHT.play();
         rightQuestions ++; // Wenn die Antwort richtig ist erhöhe rightQuestions um 1.
@@ -108,6 +124,10 @@ function answer(selection) { // Hier übergeben wir an selection ( answer_1 bis 
         AUDIO_WRONG.play();
     }
     document.getElementById('next-button').disabled = false;
+}
+
+function rightAnswerSelected(selectedQuestionNumber ,question) {
+    return selectedQuestionNumber == question['right_answer'];
 }
 
 function nextQuestion() {
