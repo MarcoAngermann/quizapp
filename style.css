@@ -16,7 +16,11 @@ body {
 }
 
 .text-color {
-    color: #cbf66c
+    color: #04fbce
+}
+
+.text-color:hover {
+    color: #ff97d6;
 }
 
 .quiz-container {
@@ -27,11 +31,11 @@ body {
 }
 
 .btn-color {
-   background-color:#c0f064;
+   background-color:#04fbce;
 }
 
 .btn-color:hover {
-    background-color:#7fc202;
+    background-color:#ff97d6;
  }
 
 .card-footer {
@@ -51,5 +55,28 @@ body {
 }
 
 .btn:disabled {
-    background-color:#c0f064;
+    background-color:#04fbce;
+}
+
+.card-img-top {
+    height: 100%;
+}
+
+.progress {
+    border-radius: 0px;
+}
+
+.progress-bar-color {
+    background-color:#04fbce;
+}
+
+@media (max-width: 800px) {
+    .col-10 {
+        width: 100%;
+    }
+
+    .container-fluid {
+        padding-left: 0px;
+        padding-right: 0px;
+    }
 }

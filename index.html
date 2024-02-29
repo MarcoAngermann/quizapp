@@ -14,25 +14,26 @@
 <body onload="init()">
     <nav class="navbar navbar-dark bg-dark">
         <div class="container-fluid">
-            <span class="navbar-brand mb-0 h1 text-color"><img class="app-logo" src="">QuizApp</span>
+            <a href="index.html" class="navbar-brand mb-0 h1 text-color"><img class="app-logo" src="">QuizApp</a>
         </div>
     </nav>
-    <div class="center-container">
-        <div id="endScreen" style="display: none;">
-            <img src="./img/brain result.png">
-        </div>
-        <div class="container-xl">
-            <div class="quiz-container" id="questionBody" style="display: flex;">
+    <!-- <div class="center-container"> -->
+        <div class="container-fluid">
+            <div class="quiz-container">
                 <div class="col-10">
                     <div class="card bg-dark">
-                        <img src="./img/question-green.jpg" class="card-img-top">
+                        <img id="cardImage" src="./img/quiz-time.jpg" class="card-img-top">
+                        <div class="progress">
+                            <div id="progress-bar" class="progress-bar progress-bar-color border-rad text-dark" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
+                          </div>
                         <div class="card-body">
-                            <h5 class="card-title text-white">Frage : </h5>
+                            <h5 id="cardTitle" class="card-title text-white">Frage : </h5>
                             <p class="card-text text-white" id="questiontext">Some quick example text to build on the card title and make
                                 up the bulk of the card's content.</p>
                             <div class="card-footer">
                             <div>
-                                <button onclick="nextQuestion()" class="btn btn-color text-dark mb-2" id="next-button" disabled>NÄCHSTE FRAGE</button> 
+                                <button onclick="nextQuestion()" class="btn btn-color text-dark mb-2" id="next-button" disabled style="display: block;">NÄCHSTE FRAGE</button>
+                                <button onclick="restartQuiz()" class="btn btn-color text-dark mb-2" id="restart-button" style="display: none;">QUIZ NEUSTARTEN</button> 
                             </div>
                             <span>
                                 <div class="text-white mt-2"><b id="question-number">1</b> von <b id="all-questions"></b> Fragen</div>
@@ -41,7 +42,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-10 mt-2">
+                <div class="col-10 mt-2" id="questionBody" style="display: block;">
                     <div class="card mb-2 text-white quiz-answer-card" onclick="answer('answer_1')">
                         <div class="card-body" id="answer_1">
                             ANTWORT 1
@@ -65,7 +66,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    <!-- </div> -->
 </body>
 
 </html>
